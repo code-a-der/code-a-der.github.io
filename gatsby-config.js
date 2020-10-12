@@ -1,12 +1,13 @@
 require(`dotenv`).config({
   path: `.env`,
-})
+});
 
-const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE
+const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE;
 
 module.exports = {
+  pathPrefix: "/",
   siteMetadata: {
-		siteTitle: '码个Der',
+    siteTitle: "码个Der",
     siteTitleAlt: `码个Der`,
   },
   plugins: [
@@ -24,8 +25,7 @@ module.exports = {
             slug: `/about`,
           },
         ],
-        externalLinks: [
-        ],
+        externalLinks: [],
       },
     },
     {
@@ -70,4 +70,4 @@ module.exports = {
       },
     },
   ].filter(Boolean),
-}
+};
