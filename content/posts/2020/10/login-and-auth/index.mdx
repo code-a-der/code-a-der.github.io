@@ -1,0 +1,40 @@
+---
+title: "登录授权了解一下"
+date: 2020-10-09
+slug: "/login-and-auth"
+---
+
+从 Cookie 的起源说起，源自 “购物车” 的需求（那时还没有 js）。
+
+客户端想让服务器存什么就发给服务端
+服务端再通过 set-cookie 传给客户端
+
+- 会话管理
+- 个性化
+- Tracking 追踪用户行为，描绘用户画像
+
+XSS HttpOnly (不让 js 拿到这个 Cookie)
+XSRF Cross-site request forgery: Refer 是浏览器自动加的，后台可以判断 Refer 不是自己信任的直接 pass
+
+
+### Authorization - Basic
+
+
+```
+Authorization: Basic <username:password(Base64ed)>
+```
+
+### Authorization - Bearer(持票人)
+
+```
+Authorization: Bearer <access token>
+```
+
+通过 OAuth2 获取到 token，不强制使用 http
+
+第三方登录：本质是一个第三方授权的过程，用 code 换取 token
+
+- 第一步：授权，第三方让用户授权自己的数据访问权限给当前平台
+- 第二步：登录，当前平台从第三方获取用户数据，完成登录注册过程
+
+
