@@ -7,7 +7,13 @@ const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE;
 module.exports = {
   siteMetadata: {
     siteTitle: "码个Der",
-    siteTitleAlt: `码个Der`,
+    siteTitleAlt: `码个Der - 码个der，码走寂寞，码出快乐`,
+    siteHeadline: `码个Der - Gatsby Theme from @lekoarts`,
+    siteUrl: `https://code-a-der.github.io`,
+    siteDescription: `记录分享开发心得和生活感悟`,
+    siteLanguage: "zh",
+    siteImage: "/banner.png",
+    authorL: "@guxuewu",
   },
   plugins: [
     {
@@ -24,7 +30,12 @@ module.exports = {
             slug: `/about`,
           },
         ],
-        externalLinks: [],
+        externalLinks: [
+          {
+            name: `掘金`,
+            url: `https://juejin.im/user/3157453124675341`,
+          },
+        ],
       },
     },
     {
