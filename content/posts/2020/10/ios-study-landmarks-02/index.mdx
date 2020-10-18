@@ -1,0 +1,83 @@
+---
+title: "SwiftUI 官方教程实践二"
+description: "学习如何数据写活和支持页面跳转"
+date: 2020-10-18
+slug: "/ios-study-landmarks-02"
+tags:
+  - iOS
+  - SwiftUI
+  - LandMarks
+---
+
+官方教程地址：[点击访问](https://developer.apple.com/tutorials/swiftui/building-lists-and-navigation)
+
+[第一篇](./ios-study-landmarks-01)教程教会了我们构建界面的基本方法。界面的元素都是写死在代码里面的。
+
+而这一篇页面里面的数据将会从一个 json 文件中读取到界面中，这是如何做到的，我们一步步拆分来看。
+
+#### 1. 在 Resources 文件夹下面准备一个 `landmarkData.json` 文件，里面准备了标准的 json 数据。
+
+#### 2. 读取 json 文件的数据到代码中，将其原始数据变成可以操作访问的对象。
+
+```swift:title=Swift
+func load<T: Decodable>(_ filename: String) -> T {
+    let data: Data
+
+    guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
+    else {
+        fatalError("Couldn't find \(filename) in main bundle.")
+    }
+
+    do {
+        data = try Data(contentsOf: file)
+    } catch {
+        fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
+    }
+
+    do {
+        let decoder = JSONDecoder()
+        return try decoder.decode(T.self, from: data)
+    } catch {
+        fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
+    }
+}
+```
+
+上面的代码做了几件事：
+
+1. 根据 fileName 从 Bundle 中读取出一个 File 对象
+2. 读取一个 file 里面的内容
+3. 将读取出来的内容转换成代码中可以使用的 Json 对象
+
+#### 3. 通过在 View 中创建一个变量，并且通过 init 方法将变量初始化
+
+举一个例子：
+
+```swift:title=Swift
+struct CircleImage: View {
+    var image: Image
+
+    var body: some View {
+        image
+            .clipShape(Circle())
+            .overlay(Circle().stroke(Color.white, lineWidth: 4))
+            .shadow(radius: 10)
+    }
+}
+
+struct CircleImage_Previews: PreviewProvider {
+    static var previews: some View {
+        CircleImage(image: Image("turtlerock"))
+    }
+}
+```
+
+定义了一个 `image` 属性，并在构造这个 View 的时候传入：`CircleImage(image: Image("turtlerock"))` ，这样就完成了 View 数据不再是死数据了，
+我们可以将转换过来的 json 对象传递给 View ，从而完成页面数据变活的第一步。
+
+
+### 页面的跳转 - NavigationView&NavigationLink
+
+这一篇也讲到了一个重要的点，页面之间如何跳转的：
+
+> 答案是使用 `NavigationView` 和 `NavigationLink` 对 View 进行包裹。从而获得页面跳转的支持。

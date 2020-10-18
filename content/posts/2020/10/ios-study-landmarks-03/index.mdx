@@ -1,0 +1,55 @@
+---
+title: "SwiftUI 官方教程实践三"
+description: "让数据和界面自动响应"
+date: 2020-10-18
+slug: "/ios-study-landmarks-03"
+tags:
+  - iOS
+  - SwiftUI
+  - LandMarks
+---
+
+官方教程地址：[点击访问](https://developer.apple.com/tutorials/swiftui/handling-user-input)
+
+[第一篇](./ios-study-landmarks-01)教程教会了我们构建界面的基本方法。界面的元素都是写死在代码里面的。
+
+[第二篇](./ios-study-landmarks-02)教程教会了初步写活页面数据并学会如何做页面跳转。
+
+而这一篇则是在数据写活上更近一步，让数据拥有生命，可以自动的去触发界面的更新。完成这个效果，需要下面几个步骤：
+
+#### 1. 定义一个实现 `ObservableObject` 协议的对象，将数据包裹在里面
+
+这样做的作用，官方原汁原味的解释如下：
+
+An observable object is a custom object for your data that can be bound to a view from storage in SwiftUI’s environment. SwiftUI watches for any changes to observable objects that could affect a view, and displays the correct version of the view after a change.
+
+需要在要被动态监听的属性上面增加 `@Published` 修饰符。
+
+#### 2. 通过下面的方式声明 ObservableObject 对象
+
+```swift:title=Swift
+@EnvironmentObject var userData: UserData
+```
+
+#### 3. 通过 `environmentObject()` 方法传入 ObservableObject 对象
+
+因为光有第二步的声明还是没有用的，environmentObject 是 userData 的源头：
+
+```swift:title=Swift
+struct LandmarkList_Previews: PreviewProvider {
+    static var previews: some View {
+        LandmarkList()
+            .environmentObject(UserData())
+    }
+}
+```
+
+#### 4. 在使用数据的地方，可以改成从 ObservableObject 对象中读取，这样就可以将 View 和 Data 绑定了
+
+```swift:title=Swift
+Toggle(isOn: $userData.showFavoritesOnly) {
+  Text("Favorites only")
+}
+```
+
+#### 5. 至此，即可完成 data 和 view 的绑定。
