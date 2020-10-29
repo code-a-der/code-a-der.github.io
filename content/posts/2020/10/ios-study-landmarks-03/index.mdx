@@ -44,6 +44,9 @@ struct LandmarkList_Previews: PreviewProvider {
 }
 ```
 
+还有一点需要注意的是，这个 environmentObject 是全局的，也就是我们只要在程序入口的地方设置了，可以在这个程序的所有页面代码
+里面通过 @EnvironmentObject 来声明使用，不过为了让 preview 工作，我们需要额外为 preview 配置一下而已。
+
 #### 4. 在使用数据的地方，可以改成从 ObservableObject 对象中读取，这样就可以将 View 和 Data 绑定了
 
 ```swift:title=Swift

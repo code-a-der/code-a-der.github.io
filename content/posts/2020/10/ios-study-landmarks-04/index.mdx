@@ -1,0 +1,32 @@
+---
+title: "SwiftUI 官方教程实践四"
+description: "把页面串联起来"
+date: 2020-10-29
+slug: "/ios-study-landmarks-04"
+tags:
+  - iOS
+  - SwiftUI
+  - LandMarks
+---
+
+官方教程地址：[点击访问](https://developer.apple.com/tutorials/swiftui/handling-user-input)
+
+[第一篇](./ios-study-landmarks-01)教程教会了我们构建界面的基本方法。界面的元素都是写死在代码里面的。
+
+[第二篇](./ios-study-landmarks-02)教程教会了初步写活页面数据并学会如何做页面跳转。
+
+[第三篇](./ios-study-landmarks-03)教程教会了如何让数据和视图可以响应式的变化联动。
+
+前三篇是开发一个简单 APP 的基础，而这一篇则教我们如何通过 `NavigationView` 和 `NavigationLink` 将整个 APP 零散的页面串联起来。
+
+一般来说，一个 APP 会由一个首页+若干子页面组成。
+
+页面与页面之间的：
+
+1. 跳转
+2. 数据传递
+3. 数据回调
+
+都是让一个个页面能互相沟通的关键。
+
+有了这些串联，APP 页面之间才会形成业务逻辑关系，也才会变成一个整体。
