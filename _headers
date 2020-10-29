@@ -64,6 +64,15 @@
   Link: </component---node-modules-lekoarts-gatsby-theme-minimal-blog-core-src-templates-tags-query-tsx-719b351c69029b205d9b.js>; rel=preload; as=script
   Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
   Link: </page-data/tags/page-data.json>; rel=preload; as=fetch; crossorigin
+/ios-study-landmarks-04
+  Link: </webpack-runtime-1dd71bf589dbd3ebe26f.js>; rel=preload; as=script
+  Link: </framework-0e8501c0599d79803b4b.js>; rel=preload; as=script
+  Link: </app-8312075744f5ab344c8e.js>; rel=preload; as=script
+  Link: </styles-c2fe8482057191dca484.js>; rel=preload; as=script
+  Link: </aed2e917f30c051bccba91aa15989a75fd0bd633-e27c220d2fbcd6afb803.js>; rel=preload; as=script
+  Link: </component---node-modules-lekoarts-gatsby-theme-minimal-blog-core-src-templates-post-query-tsx-18743b279a40ed3a3324.js>; rel=preload; as=script
+  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
+  Link: </page-data/ios-study-landmarks-04/page-data.json>; rel=preload; as=fetch; crossorigin
 /ios-study-landmarks-03
   Link: </webpack-runtime-1dd71bf589dbd3ebe26f.js>; rel=preload; as=script
   Link: </framework-0e8501c0599d79803b4b.js>; rel=preload; as=script
